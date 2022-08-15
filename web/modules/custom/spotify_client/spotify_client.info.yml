@@ -1,0 +1,5 @@
+name: Spotify Client
+type: module
+description: Spotify Client App
+package: Custom
+core_version_requirement: ^8 || ^9

@@ -1,0 +1,31 @@
+spotify_client.songs_list:
+  path: '/songs'
+  defaults:
+    _title: 'Songs'
+    _controller: '\Drupal\spotify_client\Controller\SpotifySongsListController::build'
+  requirements:
+    _permission: 'access content'
+
+spotify_client.artists_list:
+  path: 'artists'
+  defaults:
+    _title: 'Artists'
+    _controller: '\Drupal\spotify_client\Controller\SpotifyArtistsListController::build'
+  requirements:
+    _permission: 'access content'
+
+spotify_client.artists_single:
+  path: '/artists/{id}'
+  defaults:
+    _title: 'Artist Single'
+    _controller: '\Drupal\spotify_client\Controller\SpotifyArtistsSingleController::build'
+  requirements:
+    _permission: 'access content'
+
+spotify_client.songs_single:
+  path: '/songs/{id}'
+  defaults:
+    _title: 'Songs Single'
+    _controller: '\Drupal\spotify_client\Controller\SpotifySongsSingleController::build'
+  requirements:
+    _permission: 'access content'

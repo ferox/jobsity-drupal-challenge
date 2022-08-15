@@ -1,0 +1,37 @@
+name: jobsity-drupal-challenge
+recipe: drupal9
+config:
+  database: mysql:5.7
+services:
+  appserver:
+    webroot: web
+    composer_version: '2.2.12'
+    type: php:7.4
+    xdebug: debug
+    config:
+      php: scripts/lando-customizations/php.ini
+    build_as_root:
+      - echo "updating apt" && apt update -y
+      - echo "installing upload progress" && pecl install uploadprogress 2>&1 >/dev/null
+      - docker-php-ext-enable uploadprogress 2>&1 >/dev/null
+      - echo "enabling apache modules" && a2enmod expires headers deflate rewrite 2>&1 >/dev/null
+      - echo "restarting apache" && service apache2 reload 2>&1 >/dev/null
+tooling:
+  drush:
+    service: appserver
+    cmd:
+      - "/app/vendor/drush/drush/drush --root=/app"
+  composer:
+    service: appserver
+    cmd:
+      - "php -d memory_limit=-1 /usr/local/bin/composer --working-dir=/app"
+  xdebug-on:
+    service: appserver
+    description: Enable xdebug for Apache.
+    cmd: docker-php-ext-enable xdebug && /etc/init.d/apache2 reload && echo "Enabling xdebug"
+    user: root
+  xdebug-off:
+    service: appserver
+    description: Disable xdebug for Apache.
+    cmd: rm /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini && /etc/init.d/apache2 reload && echo "Disabling xdebug"
+    user: root

@@ -1,0 +1,77 @@
+<div class="content">
+    <div class="card">
+        <img alt="{{ song.name }}" class="card-img-top" src="{{ song.album.images[1].url }}">
+        <div class="card-body">
+            <h5 class="card-title">
+                {{ song.name }}
+            </h5>
+          <a href="{{ song.external_urls.spotify }}">
+            Spotify song link
+          </a>
+          <hr>
+          <p>Popularity: {{ song.popularity }}</p>
+          <p>Release date: {{ song.release_date|date("m/d/Y") }}</p>
+        </div>
+    </div>
+</div>
+
+<br>
+<br>
+
+<div class="content">
+    <h4>
+        Genres
+    </h4>
+    <table class="table table-striped">
+        <tbody>
+            {% for genre in song.genres %}
+            <tr>
+                <td>
+                    {{ genre }}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<br>
+<br>
+
+<div class="content">
+    <h4>
+        Song Artists
+    </h4>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">
+                    #
+                </th>
+                <th scope="col">
+                    Name
+                </th>
+                <th scope="col">
+                    Link
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i,item in song.artists %}
+            <tr>
+                <th scope="row">
+                    {{ i }}
+                </th>
+                <td>
+                    {{ item.name }}
+                </td>
+                <td>
+                  <a class="button" href="{{ path('spotify_client.artists_single', {'id' : item.id}) }}">
+                    DETAIL
+                  </a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>

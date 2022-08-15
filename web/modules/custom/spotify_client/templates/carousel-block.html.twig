@@ -1,0 +1,31 @@
+<hr>
+<div class="carousel-container">
+<div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
+  <div class="carousel-indicators">
+    {% for i,item in songs.tracks.items %}
+      <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="{{ i }}" class="{{ i == 0 ? 'active' : '' }}" aria-label="{{ item.name }}" aria-current="{{ i == 0 ? 'true' : 'false' }}"></button>
+    {% endfor %}
+  </div>
+  <div class="carousel-inner">
+    {% for i,item in songs.tracks.items %}
+      <div class="carousel-item {{ i == 0 ? 'active' : '' }}">
+        <img alt="{{ item.name }}" class="bd-placeholder-img bd-placeholder-img-lg d-block w-100" src="{{ item.album.images[0].url }}" width="640" height="640">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>{{ item.name }}</h5>
+          <p>
+            <a class="button" href="{{ path('spotify_client.songs_single', {'id' : item.id}) }}">DETAIL</a>
+          </p>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+</div>

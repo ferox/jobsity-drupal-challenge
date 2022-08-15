@@ -1,0 +1,59 @@
+<div>
+  <h2>
+    {{ artist.name }}
+  </h2>
+  <img alt="" src="{{ artist.images[2].url }}"><br>
+  <a href="{{ artist.external_urls.spotify }}">
+    Spotify artist link
+  </a><br>
+  <a class="button" href="{{ path('spotify_client.artists_list') }}">
+    Back to Artists
+  </a>
+  <p># {{ artist.followers.total }} of followers</p>
+  <hr>
+</div>
+<table>
+  <tr>
+    <th>
+      Genres
+    </th>
+  </tr>
+  {% for genre in artist.genres %}
+    <tr>
+      <td>
+        {{ genre }}
+      </td>
+    </tr>
+  {% endfor %}
+</table>
+<hr>
+<table>
+  <tr>
+    <th>
+      Photo
+    </th>
+    <th>
+      Album
+    </th>
+    <th>
+      Song
+    </th>
+  </tr>
+  {% for track in tracks.tracks %}
+  <tr>
+    <td>
+      <img alt="" src="{{ track.album.images[2].url }}">
+    </td>
+    <td>
+      <a href="{{ track.album.external_urls.spotify }}">
+        {{ track.album.name }}
+      </a>
+    </td>
+    <td>
+      <a href="{{ path('spotify_client.songs_single', {'id' : track.id}) }}">
+        {{ track.name }}
+      </a>
+    </td>
+  </tr>
+  {% endfor %}
+</table>

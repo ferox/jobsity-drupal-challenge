@@ -1,0 +1,22 @@
+<hr>
+<div class="grid-container">
+    {% for r in artists.artists.items|batch(5) %}
+    <div class="card-group">
+        {% for c in r %}
+        <div class="card" style="width: 18rem;">
+            <img alt="{{ c.name }}" class="card-img-top" src="{{ c.images[1].url }}">
+            <div class="card-body">
+                <h5 class="card-title">
+                    {{ c.name }}
+                </h5>
+            </div>
+            <div class="card-body">
+                <a class="card-link" href="{{ path('spotify_client.artists_single', {'id' : c.id}) }}">
+                    view more
+                </a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% endfor %}
+</div>

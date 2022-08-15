@@ -1,0 +1,38 @@
+.carousel-container {
+	width: 480px;
+	height: 480px;
+}
+
+.carousel-container .carousel-caption h5 {
+	font-size: 24px;
+	color:  #ffffff;
+}
+
+.carousel-container .carousel-indicators button.active {
+	color:  #ffffff;
+	background-color: #ffffff;
+}
+
+.card-deck,
+.card-group {
+	margin-bottom: 30px !important;
+	gap: 20px;
+}
+
+.card-img-song-list {
+	width: 140px !important;
+	height: 140px !important;
+	max-width: initial;
+}
+
+.block-spotify-client
+.content
+.grid-container
+{
+	padding: 15px;
+	margin-bottom: 45px;
+	border: 1px solid #d6d6d6;
+	background-color: #f6f6f2;
+}
+
+
