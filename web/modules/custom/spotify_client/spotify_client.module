@@ -1,0 +1,72 @@
+<?php
+
+/**
+ * @file
+ * Primary module hooks for Spotify Client module.
+ *
+ * @DCG
+ * This file is no longer required in Drupal 8.
+ * @see https://www.drupal.org/node/2217931
+ */
+
+/**
+ * Implements hook_theme().
+ */
+function spotify_client_theme()
+{
+  return [
+    'songs_list_page' => [
+      'variables' => [
+        'songs' => NULL,
+      ],
+      'template' => 'songs-list-page',
+    ],
+
+    'artists_list_page' => [
+      'variables' => [
+        'artists' => NULL,
+      ],
+      'template' => 'artists-list-page',
+    ],
+
+    'artists_single_page' => [
+      'variables' => [
+        'artist' => NULL,
+        'tracks' => NULL,
+      ],
+      'template' => 'artists-single-page',
+    ],
+
+    'songs_single_page' => [
+      'variables' => [
+        'song' => NULL,
+      ],
+      'template' => 'songs-single-page',
+    ],
+
+    'carousel_block' => [
+      'variables' => [
+        'songs' => NULL,
+      ],
+      'template' => 'carousel-block',
+    ],
+
+    'grid_block' => [
+      'variables' => [
+        'artists' => NULL,
+      ],
+      'template' => 'grid-block',
+    ],
+
+  ];
+}
+
+/**
+ * Implements template_preprocess_region().
+ */
+function spotify_client_preprocess_region(&$variables) {
+  if (isset($variables['region']) && $variables['region'] == 'content') {
+    $variables['#attached']['library'][] = 'spotify_client/region-spotify-client-styles';
+    $variables['#attached']['library'][] = 'spotify_client/region-spotify-client-scripts';
+  }
+}

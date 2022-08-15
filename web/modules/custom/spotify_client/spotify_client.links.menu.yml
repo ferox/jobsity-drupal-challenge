@@ -1,0 +1,12 @@
+spotify_client.songs_list:
+  title: Songs
+  description: 'Songs'
+  route_name: spotify_client.songs_list
+  menu_name: main
+  weight: 1
+spotify_client.artists_list:
+  title: Artists
+  description: 'Artists'
+  route_name: spotify_client.artists_list
+  menu_name: main
+  weight: 1

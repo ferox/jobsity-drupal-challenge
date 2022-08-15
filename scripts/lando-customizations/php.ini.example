@@ -1,0 +1,6 @@
+memory_limit = -1
+xdebug.start_with_request = yes
+
+; Remote settings
+xdebug.remote_enable = 1
+xdebug.remote_autostart = 1

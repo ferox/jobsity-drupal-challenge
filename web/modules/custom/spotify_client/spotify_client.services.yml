@@ -1,0 +1,4 @@
+services:
+  spotify_client.request:
+    class: Drupal\spotify_client\Service\SpotifyClientRequestService
+    arguments: ['@http_client', '@logger.factory', '@string_translation']

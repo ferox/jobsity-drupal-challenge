@@ -1,0 +1,11 @@
+region-spotify-client-styles:
+  css:
+    theme:
+      https://cdn.jsdelivr.net/npm/bootstrap@5.1/dist/css/bootstrap.min.css: { type: external }
+      css/styles.css: {}
+
+region-spotify-client-scripts:
+  js:
+    https://cdn.jsdelivr.net/npm/bootstrap@5.1/dist/js/bootstrap.bundle.min.js: { type: external }
+    dependencies:
+      - core/jquery
